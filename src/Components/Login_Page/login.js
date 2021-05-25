@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
+import './login.css'
 
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-
 
 const useStyles = makeStyles({
 
@@ -20,16 +20,14 @@ const useStyles = makeStyles({
 
 });
 
-
-const Login = (props) => {
+const Login = () => {
     const classes = useStyles();
 
-    const [user, setUser] = useState([]);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [inputEmailError, setInputEmailError] = useState(false);
     const [inputPasswordError, setInputPasswordError] = useState(false);
-
+    const history = useHistory()
 
     const changingEmail = (event) => {
         setEmail(event.target.value)
@@ -42,7 +40,7 @@ const Login = (props) => {
     const verifiedData = () => {
         axios.get('https://60895cb08c8043001757ea35.mockapi.io/api/user')
             .then(response => {
-                setUser(response.data)
+
 
                 const userArray = response.data;
                 const inputEmail = email;
@@ -72,15 +70,19 @@ const Login = (props) => {
 
 
                 if (result && resultPassword) {
-                    console.log('user logged in ')
+                    localStorage.setItem('email', JSON.stringify(email));
+                    localStorage.setItem('password', JSON.stringify(password));
+                    history.push("/HelloUser");
                 }
+
+
             });
     }
-
 
     return (
 
         <div className={classes.loginFormMargin}>
+
             <Grid
                 container
                 direction="row"
@@ -103,43 +105,39 @@ const Login = (props) => {
                             variant="outlined"
                             onChange={changingEmail} />
                         </Grid>
-                        <Grid item>
-                            {
-                                inputEmailError ?
-                                    <span style={{ color: "red" }}>Enter Valid Email</span>
-                                    :
-                                    null
-                            }
+                        {
+                            inputEmailError ?
+                                <span className="error-message">Incorrect Email</span>
 
-                        </Grid>
+                                :
+                                null
+                        }
+
                         <Grid item><TextField
                             id="outlined-basic"
                             label="Enter Password"
                             variant="outlined"
                             onChange={changingPassword} />
                         </Grid>
-                        <Grid item>
-                            {
-                                inputPasswordError ?
-                                    <span style={{ color: "red" }}>Invalid Password</span>
-                                    :
-                                    null
-                            }
+                        {
+                            inputPasswordError ?
+                                <span className="error-message">Incorrect Password</span>
+                                :
+                                null
+                        }
 
-                        </Grid>
 
                         <Grid item>
+
                             <Button
                                 variant="contained"
                                 color="primary"
                                 onClick={verifiedData}
                             >
-                                Login</Button>
-
+                                Login </Button>
                         </Grid>
 
                         <Grid><p>Don't have an account? <strong><Link to="/SignUp">SignUp</Link></strong></p></Grid>
-
 
                     </Grid>
 

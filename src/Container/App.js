@@ -1,46 +1,40 @@
+import React, { useEffect, useState } from 'react'
 import './App.css';
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  Redirect
-} from "react-router-dom";
+import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 
 import Login from '../Components/Login_Page/login';
 import SignUp from '../Components/Signup_Page/signup';
-import HelloUsers from '../Components/HelloUsers/helloUsers';
+import EmployeeDetails from '../Components/Employees_Page/employeeDetails';
+import Navbar from '../Components/NavBar/navbar';
+import HelloUser from '../Components/HelloUser/hellouser';
+import PrivateRoute from "./privateRoutes"
 
 
-function App() {
+function App(props) {
+
+  const [showNavbar, setShowNavbar] = useState(false)
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.pathname === "/login" || location.pathname === "/SignUp") {
+      setShowNavbar(false)
+    }
+    else {
+      setShowNavbar(true)
+    }
+  }, [location])
+
   return (
 
     <div className="App">
-
-      <BrowserRouter>
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => {
-              return (
-
-                <Redirect to="/login" />
-
-              )
-            }}
-          />
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/signup">
-            <SignUp />
-          </Route>
-          <Route path="/helloUsers">
-            <HelloUsers/>
-          </Route>
-
-        </Switch>
-      </BrowserRouter>
+      {showNavbar ? <Navbar /> : null}
+      <Switch>
+        <Route exact path="/" render={() => { return (<Redirect to="/login" />) }} />
+        <Route path="/SignUp"> <SignUp /> </Route>
+        <PrivateRoute exact path="/Hellouser" component={HelloUser} flag="true" />
+        <PrivateRoute path="/Employeedetails" component={EmployeeDetails} flag="true" />
+        <PrivateRoute exact path="/login" component={Login} />
+      </Switch>
     </div>
   );
 }

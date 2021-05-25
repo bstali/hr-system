@@ -6,16 +6,19 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import App from '../src/Container/App';
 import theme from './Theme/theme';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router} from "react-router-dom";
 
 
 
 
 ReactDOM.render(
+  <Router>
   <ThemeProvider theme={theme}>
     {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
     <CssBaseline />
     <App />
-  </ThemeProvider>,
+  </ThemeProvider>
+  </Router>,
   document.getElementById('root'),
 );
 
