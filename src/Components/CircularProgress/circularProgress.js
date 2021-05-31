@@ -8,10 +8,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: 50,
     paddingTop:200,
     color:'#14196b',
-     
-    '& > * + *': {
-      marginLeft: theme.spacing(2),
-    },
+    zIndex: 1000
   },
 }));
 

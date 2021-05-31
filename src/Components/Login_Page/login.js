@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
-import './login.css'
 
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
@@ -18,6 +17,11 @@ const useStyles = makeStyles({
         color: "blue"
     },
 
+    loginErrorMessages: {
+        color: 'red',
+        fontSize: '12px',
+    }
+
 });
 
 const Login = () => {
@@ -29,18 +33,17 @@ const Login = () => {
     const [inputPasswordError, setInputPasswordError] = useState(false);
     const history = useHistory()
 
-    const changingEmail = (event) => {
+    const emailHandler = (event) => {
         setEmail(event.target.value)
     }
 
-    const changingPassword = (event) => {
+    const passwordHandler = (event) => {
         setPassword(event.target.value)
     }
 
     const verifiedData = () => {
         axios.get('https://60895cb08c8043001757ea35.mockapi.io/api/user')
             .then(response => {
-
 
                 const userArray = response.data;
                 const inputEmail = email;
@@ -85,61 +88,56 @@ const Login = () => {
 
             <Grid
                 container
-                direction="row"
+                direction="column"
                 justify="center"
                 alignItems="center"
             >
-
-
-                <Grid item sm={12}>
+                <Grid item>
                     <Grid
                         container
                         direction="column"
                         justify="center"
-                        alignItems="center"
+                        alignItems="flex-start"
                         spacing={2}
                     >
                         <Grid item><TextField
                             id="outlined-basic"
                             label="Enter UserName"
                             variant="outlined"
-                            onChange={changingEmail} />
+                            value={email}
+                            onChange={emailHandler} />
                         </Grid>
-                        {
-                            inputEmailError ?
-                                <span className="error-message">Incorrect Email</span>
-
-                                :
-                                null
+                        {inputEmailError ?
+                            <Grid item style={{ padding: '0px 0px 0px 12px' }}>
+                                <div className={classes.loginErrorMessages}>This email already exist.</div>
+                            </Grid>
+                            : null
                         }
-
-                        <Grid item><TextField
-                            id="outlined-basic"
-                            label="Enter Password"
-                            variant="outlined"
-                            onChange={changingPassword} />
-                        </Grid>
-                        {
-                            inputPasswordError ?
-                                <span className="error-message">Incorrect Password</span>
-                                :
-                                null
-                        }
-
 
                         <Grid item>
-
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                onClick={verifiedData}
-                            >
-                                Login </Button>
+                            <TextField
+                                id="standard-error-helper-text"
+                                label="Enter Password"
+                                variant="outlined"
+                                value={password}
+                                onChange={passwordHandler} />
                         </Grid>
-
-                        <Grid><p>Don't have an account? <strong><Link to="/SignUp">SignUp</Link></strong></p></Grid>
-
+                        {inputPasswordError ?
+                            <Grid item style={{ paddingTop: '0px', paddingLeft: '12px' }}>
+                                <div className={classes.loginErrorMessages}>Invalid password.</div>
+                            </Grid>
+                            : null
+                        }
                     </Grid>
+                    <Grid item>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={verifiedData}
+                        >
+                            Login </Button>
+                    </Grid>
+                    <Grid><p>Don't have an account? <strong><Link to="/SignUp">SignUp</Link></strong></p></Grid>
 
                 </Grid>
 
