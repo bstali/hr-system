@@ -1,12 +1,7 @@
-import React from 'react';
+import React,{useState} from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import PersonalInfoTab from './UserDetails';
+import { makeStyles, AppBar, Tabs, Tab, Typography, Box, } from '@material-ui/core';
+import UserInfo from './UserInfo';
 import UserTimeOffChart from './UserTimeOffChart';
 
 function TabPanel(props) {
@@ -21,7 +16,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box p={0}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -42,32 +37,35 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: '#14196b',
+    height: '50px',
+    paddingTop: '0px',
   },
-}));
+});
 
-export default function SimpleTabs() {
+export default function SimpleTabs(props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-
+  
+ 
+  const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+ 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
+    <div >
+      <AppBar position="static" className={classes.root}>
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="Personal Information" {...a11yProps(0)} />
+          <Tab label="Employee Info" {...a11yProps(0)} />
           <Tab label="Time Off" {...a11yProps(1)} />
           
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
-        <PersonalInfoTab />
+      <TabPanel value={value} index={0} >
+        <UserInfo userDetail={props.userDetail}/> 
       </TabPanel>
       <TabPanel value={value} index={1}>
         <UserTimeOffChart />

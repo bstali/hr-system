@@ -1,14 +1,16 @@
 import React from 'react';
-import { makeStyles, CardContent, Card, TextField, Tab } from '@material-ui/core';
+import { makeStyles, CardContent, Card, TextField } from '@material-ui/core';
 
 const useStyles = makeStyles({
     card: {
         width: '100%',
+        boxShadow: '2px 5px 7px grey'
     },
 
     TextField: {
-        width: '100%',
+        width: '50%',
         marginBottom: '10px',
+        
 
     },
 
@@ -17,25 +19,30 @@ const useStyles = makeStyles({
     },
 
     Label_size: {
-        width: '20ch',
-        marginLeft: 0,
+        width: '150px',
+        textAlign: 'center',
         fontWeight: 'bold',
-        marginTop: '20px'
+        marginTop: '25px'
     },
-
+    
 })
 
-export default function UserProfile() {
+export default function UserInfo(props) {
     const classes = useStyles();
+    const user =props.userDetail
+        console.log("user from child", user)
     return (
         <Card className={classes.card}>
-            <CardContent>
+          
+            <CardContent> 
+                {user ?
+                <div>
                 <div
                     className={classes.TextField_label_display}>
                     <p className={classes.Label_size}>Employee ID:</p>
                     <TextField className={classes.TextField}
                         id="filled-read-only-input"
-                        defaultValue="1"
+                        defaultValue={user.id}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -47,7 +54,7 @@ export default function UserProfile() {
                     <p className={classes.Label_size}>Name:</p>
                     <TextField className={classes.TextField}
                         id="filled-read-only-input"
-                        defaultValue="Hassan Ajaz"
+                        defaultValue={user.name}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -59,7 +66,7 @@ export default function UserProfile() {
                     <p className={classes.Label_size}>Email:</p>
                     <TextField className={classes.TextField}
                         id="filled-read-only-input"
-                        defaultValue="hassan@gmail.com"
+                        value={user.email}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -68,10 +75,10 @@ export default function UserProfile() {
                 </div>
                 <div
                     className={classes.TextField_label_display}>
-                    <p className={classes.Label_size}>Work Phone:</p>
+                    <p className={classes.Label_size}>Company Name:</p>
                     <TextField className={classes.TextField}
                         id="filled-read-only-input"
-                        defaultValue="+92321-#######"
+                       value={user.companyName}
                         InputProps={{
                             readOnly: true,
                         }}
@@ -83,7 +90,7 @@ export default function UserProfile() {
                     <p className={classes.Label_size}>Home Phone:</p>
                     <TextField className={classes.TextField}
                         id="filled-read-only-input"
-                        defaultValue=""
+                        defaultValue="+92321-#######"
                         InputProps={{
                             readOnly: true,
                         }}
@@ -97,7 +104,7 @@ export default function UserProfile() {
                         id="filled-multiline-static"
                         multiline
                         rows={4}
-                        defaultValue="192/B Behria Town"
+                        defaultValue="192/B, Behria Town"
                         InputProps={{
                             readOnly: true,
                         }}
@@ -109,7 +116,7 @@ export default function UserProfile() {
                     <p className={classes.Label_size}>Emergency Contact:</p>
                     <TextField className={classes.TextField}
                         id="filled-read-only-input"
-                        defaultValue="+92321-#######"
+                        defaultValue="+92321-######"
                         InputProps={{
                             readOnly: true,
                         }}
@@ -121,7 +128,7 @@ export default function UserProfile() {
                     <p className={classes.Label_size}>Birth Date:</p>
                     <TextField className={classes.TextField}
                         id="filled-read-only-input"
-                        defaultValue="27-Oct-1992"
+                        defaultValue="26-10-1992"
                         InputProps={{
                             readOnly: true,
                         }}
@@ -133,7 +140,7 @@ export default function UserProfile() {
                     <p className={classes.Label_size}>Job Start Date:</p>
                     <TextField className={classes.TextField}
                         id="filled-read-only-input"
-                        defaultValue="02-01-2021"
+                        defaultValue="01-01-2021"
                         InputProps={{
                             readOnly: true,
                         }}
@@ -145,25 +152,17 @@ export default function UserProfile() {
                     <p className={classes.Label_size}>Job Title:</p>
                     <TextField className={classes.TextField}
                         id="filled-read-only-input"
-                        defaultValue="CEO"
+                        defaultValue="Software Engineer"
                         InputProps={{
                             readOnly: true,
                         }}
                         variant="filled"
                     />
                 </div>
-                <div
-                    className={classes.TextField_label_display}>
-                    <p className={classes.Label_size}>Time Off Approver:</p>
-                    <TextField className={classes.TextField}
-                        id="filled-read-only-input"
-                        defaultValue=""
-                        InputProps={{
-                            readOnly: true,
-                        }}
-                        variant="filled"
-                    />
-                </div>
+            </div>
+        :
+        null
+                }
             </CardContent>
         </Card>
     )

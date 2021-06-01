@@ -10,7 +10,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import CircularProgress from '../CircularProgress/circularProgress';
+import CircularProgress from '../CircularProgress/CircularProgress';
 import Avatar from '@material-ui/core/Avatar';
 
 

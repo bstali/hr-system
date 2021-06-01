@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
     display: 'flex',
     paddingLeft: 50,
@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     color:'#14196b',
     zIndex: 1000
   },
-}));
+});
 
 export default function CircularIndeterminate() {
   const classes = useStyles();
