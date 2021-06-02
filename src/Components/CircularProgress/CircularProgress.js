@@ -5,10 +5,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    paddingLeft: 50,
-    paddingTop:200,
     color:'#14196b',
-    zIndex: 1000
+    zIndex: 1
   },
 });
 

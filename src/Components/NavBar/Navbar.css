@@ -6,6 +6,7 @@
     color: white;
     font-family: Helvetica;
     font-weight: 300;
+    
 }
 
 .navbar__title {
@@ -18,4 +19,13 @@
     padding: 16px 16px;
     cursor: pointer;
     vertical-align: middle;
+    font-weight: bold;
 }
+
+.active, .navbar__item.active:hover {
+    background-color: rgba(194, 195, 197, 0.945);
+    color: #14196b;
+    border-radius: 40px;
+    transition: 0.1s;
+    
+  }

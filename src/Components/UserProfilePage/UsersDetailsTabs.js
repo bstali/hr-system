@@ -43,17 +43,20 @@ const useStyles = makeStyles({
     backgroundColor: '#14196b',
     height: '50px',
     paddingTop: '0px',
+    borderRadius: '0.3rem 0.3rem 0 0',
+    boxShadow: '2px 5px 7px 2px grey',
   },
+  
 });
 
 export default function SimpleTabs(props) {
   const classes = useStyles();
   
- 
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
  
   return (
     <div >
@@ -64,12 +67,14 @@ export default function SimpleTabs(props) {
           
         </Tabs>
       </AppBar>
+      <div>
       <TabPanel value={value} index={0} >
         <UserInfo userDetail={props.userDetail}/> 
       </TabPanel>
       <TabPanel value={value} index={1}>
         <UserTimeOffChart />
       </TabPanel>
+      </div>
     </div>
   );
 }

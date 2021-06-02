@@ -34,7 +34,7 @@ function App(props) {
         <Route path="/SignUp"> <SignUp /> </Route>
         <PrivateRoute exact path="/Hellouser" component={HelloUser} flag="true" />
         <PrivateRoute exact path="/Employeedetails" component={EmployeeDetails} flag="true" />
-        <PrivateRoute exact path="/Userprofile" component={UserProfile} flag="true" />
+        <PrivateRoute exact path="/Userprofile/:id" component={UserProfile} flag="true" />
         <PrivateRoute exact path="/login" component={Login} />
       </Switch>
     </div>

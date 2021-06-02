@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { orderBy } from 'lodash';
 import { makeStyles } from '@material-ui/core/styles';
@@ -12,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '../CircularProgress/CircularProgress';
 import Avatar from '@material-ui/core/Avatar';
+import UserProfile from '../UserProfilePage/UserProfile'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -30,7 +32,13 @@ const useStyles = makeStyles((theme) => ({
   },
   userNameText: {
     marginLeft: '6px',
-    marginTop: '3px'
+    marginTop: '3px',
+    cursor: 'pointer'
+  },
+
+  circularProgress: {
+    paddingLeft: 50,
+    paddingTop: 200,
   }
 }));
 
@@ -39,10 +47,11 @@ function EmployeeDetailsTable() {
   const [users, setUsers] = useState([]);
   const classes = useStyles();
   const [circularProgress, setCircularProgress] = useState(false)
+  const history = useHistory();
 
   useEffect(() => {
     setCircularProgress(true)
-    axios.get('https://60895cb08c8043001757ea35.mockapi.io/api/user')
+    axios.get('https://60895cb08c8043001757ea35.mockapi.io/api/user/')
       .then(response => {
         const usersArray = response.data;
         setUsers(usersArray)
@@ -59,6 +68,13 @@ function EmployeeDetailsTable() {
       sortedUsers = orderBy(usersArray, ['name'], ['asc'])
     }
     setUsers(sortedUsers)
+  }
+
+  const getIdUrl = (userId) => {
+    console.log(userId,"BBBBBBBBBBBBBBBBBBSIT")
+    history.push(`/Userprofile/${userId}`)
+   { <UserProfile user={userId}/>}
+    
   }
 
   return (
@@ -113,7 +129,7 @@ function EmployeeDetailsTable() {
                           <TableCell align="left">
                             <div className={classes.root}>
                               <Avatar className={classes.avatar}>{usr.name.charAt(0)}</Avatar>
-                              <div className={classes.userNameText}>{usr.name}</div>
+                              <div className={classes.userNameText} onClick={()=>{getIdUrl(usr.id)}}>{usr.name} </div>
                             </div>
                           </TableCell>
                           <TableCell align="left">#####</TableCell>

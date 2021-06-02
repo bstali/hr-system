@@ -1,9 +1,11 @@
-import React from 'react';
+import React,{} from 'react';
 import './Navbar.css';
 import { useHistory } from 'react-router-dom';
 
 const Navbar = () => {
     let history = useHistory()
+
+   
     return (
         <header className='navbar'>
             <div
@@ -11,12 +13,12 @@ const Navbar = () => {
                 HR
             </div>
             <div
-                className='navbar__item'
+                className='navbar__item active' 
                 onClick={() => { history.push("/Employeedetails") }}>
                 Employees
             </div>
             <div
-                className='navbar__item'
+                className='navbar__item '
                 onClick={() => { history.push("/Hellouser") }}>
                 Hello_User
             </div>
