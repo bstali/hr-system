@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 
 export default function UserBasicInfo(props) {
     const classes = useStyles();
- console.log('user basid info props', props)
+ console.log('user basic info props', props)
     return (
         <Card className={classes.card}>
             <CardContent>

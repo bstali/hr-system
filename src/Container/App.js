@@ -8,6 +8,7 @@ import Navbar from '../Components/NavBar/Navbar';
 import HelloUser from '../Components/HelloUser/HelloUser';
 import PrivateRoute from "./PrivateRoutes";
 import UserProfile from '../Components/UserProfilePage/UserProfile';
+import Logout from '../Components/logout/logout'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles({
@@ -40,7 +41,8 @@ function App(props) {
         <PrivateRoute exact path="/Hellouser" component={HelloUser} flag="true" />
         <PrivateRoute exact path="/Employeedetails" component={EmployeeDetails} flag="true" className='main-nav-active' />
         <PrivateRoute exact path="/Userprofile/:id" component={UserProfile} flag="true" />
-        <PrivateRoute exact path="/login" component={Login} />
+        <PrivateRoute exact path="/Logout" component={Logout} flag="true" />
+        <PrivateRoute exact path="/Login" component={Login} />
       </Switch>
     </div>
   );

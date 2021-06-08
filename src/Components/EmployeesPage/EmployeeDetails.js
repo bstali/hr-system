@@ -80,6 +80,7 @@ function EmployeeDetailsTable() {
     history.push(`/Userprofile/${userId}`)
 
   }
+  
 
   return (
     <div>

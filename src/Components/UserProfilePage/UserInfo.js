@@ -16,11 +16,20 @@ const useStyles = makeStyles({
         backgroundColor: '#a1a0a093'
     },
 
-    Address_TextField: {
+    homeAddress_TextField: {
         width: '300px',
         marginBottom: '4px',
         marginTop: '10px',
         backgroundColor: '#a1a0a093'
+    },
+    
+    homeAddress_label_size: {
+        width: '250px',
+        textAlign: 'right',
+        fontWeight: 'bold',
+        fontSize: '0.9rem',
+        marginTop: '28px',
+        marginRight: '20px'
     },
 
     TextField_label_display: {
@@ -114,14 +123,14 @@ export default function UserInfo(props) {
                         </div>
                         <div
                             className={classes.TextField_label_display}>
-                            <span className={classes.Label_size}>Home Address</span>
+                            <span className={classes.homeAddress_label_size}>Home Address</span>
                             <TextField
                                 multiline
                                 rows={4}
                                 value="192/B, Behria Town"
                                 InputProps={{
                                     readOnly: true,
-                                    className: classes.Address_TextField
+                                    className: classes.homeAddress_TextField
                                 }}
                                 variant="outlined"
                             />

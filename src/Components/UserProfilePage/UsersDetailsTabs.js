@@ -50,7 +50,7 @@ const useStyles = makeStyles({
   
 });
 
-export default function SimpleTabs(props) {
+export default function UserDetailsTabs(props) {
   const classes = useStyles();
   
   const [value, setValue] = useState(0);
