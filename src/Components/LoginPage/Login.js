@@ -13,12 +13,16 @@ const useStyles = makeStyles({
     },
 
     signUpColor: {
-        color: "blue"
+        color: "#14196b"
     },
 
     loginErrorMessages: {
         color: 'red',
         fontSize: '12px',
+    },
+
+    loginButton: {
+        marginTop: '13px'
     }
 
 });
@@ -108,7 +112,7 @@ const Login = () => {
                         </Grid>
                         {inputEmailError ?
                             <Grid item style={{ padding: '0px 0px 0px 12px' }}>
-                                <div className={classes.loginErrorMessages}>This email already exist.</div>
+                                <div className={classes.loginErrorMessages}>Invalid email.</div>
                             </Grid>
                             : null
                         }
@@ -133,10 +137,16 @@ const Login = () => {
                             variant="contained"
                             color="primary"
                             onClick={verifiedData}
+                            className={classes.loginButton}
                         >
                             Login </Button>
                     </Grid>
-                    <Grid><p>Don't have an account? <strong><Link to="/SignUp">SignUp</Link></strong></p></Grid>
+                    <Grid><p>Don't have an account?
+                         <strong>
+                            <Link to="/SignUp" className={classes.signUpColor}>SignUp</Link>
+                        </strong>
+                    </p>
+                    </Grid>
 
                 </Grid>
 

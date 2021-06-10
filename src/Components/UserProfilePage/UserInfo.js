@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles, CardContent, Card, TextField } from '@material-ui/core';
+import {useSelector} from 'react-redux';
 
 const useStyles = makeStyles({
     card: {
@@ -49,22 +50,22 @@ const useStyles = makeStyles({
 })
 
 export default function UserInfo(props) {
+const {userDetails} = useSelector(state => state.userDetails)
     console.log('userinfo props', props)
     const classes = useStyles();
-    const user = props.userDetail
 
     return (
         <Card className={classes.card}>
            
             <CardContent>
-                {user ?
+                {userDetails ?
                     <div>
                         <div
                             className={classes.TextField_label_display}>
                             <span className={classes.Label_size}>Employee ID</span>
                             <TextField
                                 
-                                value={user.id}
+                                value={userDetails.id}
                                 InputProps={{
                                     readOnly: true,
                                     className: classes.TextField
@@ -76,7 +77,7 @@ export default function UserInfo(props) {
                             className={classes.TextField_label_display}>
                             <span className={classes.Label_size}>Name</span>
                             <TextField
-                                value={user.name}
+                                value={userDetails.name}
                                 InputProps={{
                                     readOnly: true,
                                     className: classes.TextField
@@ -89,7 +90,7 @@ export default function UserInfo(props) {
                             <span className={classes.Label_size}>Email</span>
 
                             <TextField
-                                value={user.email}
+                                value={userDetails.email}
                                 InputProps={{
                                     readOnly: true,
                                     className: classes.TextField
@@ -101,7 +102,7 @@ export default function UserInfo(props) {
                             className={classes.TextField_label_display}>
                             <span className={classes.Label_size}>Company Name</span>
                             <TextField
-                                value={user.companyName}
+                                value={userDetails.companyName}
                                 InputProps={{
                                     readOnly: true,
                                     className: classes.TextField

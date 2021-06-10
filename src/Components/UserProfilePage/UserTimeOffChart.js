@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Card, CardContent, makeStyles, Paper } from '@material-ui/core';
 import { Chart, PieSeries, Title } from '@devexpress/dx-react-chart-material-ui';
 import { Animation } from '@devexpress/dx-react-chart';
+import {useSelector} from 'react-redux';
 
 
 const useStyles = makeStyles({
@@ -21,11 +22,12 @@ const useStyles = makeStyles({
 
 
 export default function UserTimeOffChart(props) {
+    const {userDetails} = useSelector(state => state.userDetails)
    console.log('timeoffchart' ,props)
     const classes = useStyles();
     const chartData = [
-        { leaves: 'totalLeaves', area: props.totalLeaves },
-        { leaves: 'leavesDone', area: props.leavesDone },
+        { leaves: 'totalLeaves', area: userDetails.totalLeaves },
+        { leaves: 'leavesDone', area: userDetails.leavesDone },
     ]
 
 
@@ -35,8 +37,8 @@ export default function UserTimeOffChart(props) {
 
             <CardContent>
                 <div className={classes.content}>
-                    <h3>Total Leaves: {props.totalLeaves}</h3>
-                    <h3>Leaves Done: {props.leavesDone}</h3>
+                    <h3>Total Leaves: {userDetails.totalLeaves}</h3>
+                    <h3>Leaves Done: {userDetails.leavesDone}</h3>
                 </div>
                 <div >
                     <Paper >

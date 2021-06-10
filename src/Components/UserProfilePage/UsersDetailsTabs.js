@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { makeStyles, AppBar, Tabs, Tab, Typography, Box, } from '@material-ui/core';
 import UserInfo from './UserInfo';
 import UserTimeOffChart from './UserTimeOffChart';
-import { get } from 'lodash';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -52,7 +51,6 @@ const useStyles = makeStyles({
 
 export default function UserDetailsTabs(props) {
   const classes = useStyles();
-  
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -70,12 +68,12 @@ export default function UserDetailsTabs(props) {
       </AppBar>
       <div>
       <TabPanel value={value} index={0} >
-        <UserInfo userDetail={props.userDetail}/> 
+        <UserInfo /> 
       </TabPanel>
       <TabPanel value={value} index={1}>
         <UserTimeOffChart 
-        totalLeaves={get(props.userDetail,'totalLeaves', '')}
-        leavesDone={get(props.userDetail,'leavesDone', '')}
+        // totalLeaves={get(userDetails,'totalLeaves', '')}
+        // leavesDone={get(userDetails,'leavesDone', '')}
         />
       </TabPanel>
       </div>

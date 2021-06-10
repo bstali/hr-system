@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core';
-import Logout from '../logout/logout' ;
+import Logout from '../Logout/Logout';
 
 const useStyles = makeStyles({
     navbar: {
@@ -33,7 +33,6 @@ const useStyles = makeStyles({
     active: {
         backgroundColor: '#ffffffe8',
         color: '#14196b',
-        borderRadius: '20px',
         transition: '0.5s',
     },
 
@@ -41,15 +40,14 @@ const useStyles = makeStyles({
 
 const Navbar = () => {
     const classes = useStyles();
-
-
-
+    
     return (
         <header className={classes.navbar}>
             <div
                 className={classes.navbar__title}>
                 HR
             </div>
+
             <NavLink to="/Employeedetails"
                 className={classes.navbar__item} activeClassName={classes.active}>
 
@@ -64,8 +62,6 @@ const Navbar = () => {
             </NavLink>
 
             <Logout />
-
-
         </header>
     );
 }

@@ -1,23 +1,20 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { Grow, Paper, Popper, MenuItem, MenuList, makeStyles, Avatar } from '@material-ui/core';
-import S from 'string'
 
-// import Paper from '@material-ui/core/Paper';
-// import Popper from '@material-ui/core/Popper';
-// import MenuItem from '@material-ui/core/MenuItem';
-// import MenuList from '@material-ui/core/MenuList';
-// import { makeStyles } from '@material-ui/core/styles';
+// import S from 'string'
 
 const useStyles = makeStyles({
     avatar: {
         color: '#14196b',
         backgroundColor: '#ffffffe8',
-        marginLeft: '1000px',
+        marginLeft: '1020px',
         fontWeight: 'bold',
         cursor: 'pointer',
         fontFamily: 'Helvetica',
-
+        height: '35px',
+        width: '35px'
     },
 
     dropDownAvatar: {
@@ -32,28 +29,47 @@ const useStyles = makeStyles({
 
     paper: {
         padding: '0px 0px 0px 0px',
+    },
 
+    dropDownLogoutButton: {
+        width: '100%'
     }
+
 });
 
 export default function Logout() {
+    const history = useHistory();
+
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
-    const email = JSON.parse(localStorage.getItem('email'))
+    // const email = JSON.parse(localStorage.getItem('email'))
 
 
     const handleToggle = () => {
         setOpen((prevOpen) => !prevOpen);
+        // dispatch(logoutReducer())
     };
+
+    
 
     const handleClose = (event) => {
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
             return;
         }
-
         setOpen(false);
+
+
     };
+
+    const logoutFunctionality = () => {
+        localStorage.removeItem('email');
+        localStorage.removeItem('password');
+
+        if (localStorage.getItem('email') === null && localStorage.getItem('password') === null) {
+            history.push("/login");
+        }
+    }
 
     function handleListKeyDown(event) {
         if (event.key === 'Tab') {
@@ -83,7 +99,7 @@ export default function Logout() {
                     onClick={handleToggle}
                     className={classes.avatar}
                 >
-                    {S(email.charAt(0)).capitalize().s}
+                   H {/* <div>{S(email.charAt(0)).capitalize().s}</div>  */}
 
                 </Avatar>
             </div>
@@ -93,7 +109,7 @@ export default function Logout() {
                         {...TransitionProps}
                         style={{
                             transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
-                            boxShadow: '2px 5px 7px 2px grey', marginTop: '4px'
+                            boxShadow: '2px 5px 7px 2px grey', marginTop: '2px'
                         }}
                     >
                         <Paper className={classes.paper}>
@@ -103,12 +119,17 @@ export default function Logout() {
                                     <MenuItem onClick={handleClose}>
                                         <div>
                                             <Avatar className={classes.dropDownAvatar}>
-                                                {S(email.charAt(0)).capitalize().s}
+                                                H{/* {S(email.charAt(0)).capitalize().s} */}
                                             </Avatar>
                                         </div>
                                          My Account
                                     </MenuItem><hr />
-                                    <MenuItem onClick={handleClose}>Logout</MenuItem> <hr />
+                                    <MenuItem onClick={handleClose}>
+                                        <div onClick={logoutFunctionality}
+                                            className={classes.dropDownLogoutButton}>
+                                            Logout
+                                        </div>
+                                    </MenuItem> <hr />
                                 </MenuList>
                             </ClickAwayListener>
                         </Paper>
@@ -119,94 +140,3 @@ export default function Logout() {
         </div>
     );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React from 'react';
-// import { Menu, MenuItem, Avatar, makeStyles } from '@material-ui/core';
-
-
-// const useStyles = makeStyles({
-
-
-//     // secondMenuItem: {
-//     //     marginLeft: '70px'
-//     // }
-// })
-
-// export default function Logout() {
-//     const classes = useStyles();
-//     const [anchorEl, setAnchorEl] = React.useState(null);
-
-
-//     const handleClick = (event) => {
-//         setAnchorEl(event.currentTarget);
-//     };
-
-//     const handleClose = () => {
-//         setAnchorEl(null);
-//     };
-
-//     return (
-//         <div>
-            // <Avatar aria-controls="simple-menu"
-            //     aria-haspopup="true"
-            //     onClick={handleClick}
-            //     className={classes.avatar}>
-            // </Avatar>
-//             <Menu
-//                 id="simple-menu"
-//                 anchorEl={anchorEl}
-//                 keepMounted
-//                 open={Boolean(anchorEl)}
-//                 onClose={handleClose}
-//             >
-
-
-//                 <MenuItem onClick={handleClose}>
-
-//                     My Profile
-//                 </MenuItem><hr />
-//                 <MenuItem
-//                     onClick={handleClose} className={classes.secondMenuItem}>
-//                     Logout
-//                 </MenuItem>
-//                 <hr />
-//             </Menu>
-//         </div>
-//     );
-// }
