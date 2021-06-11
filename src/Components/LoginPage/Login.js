@@ -29,7 +29,6 @@ const useStyles = makeStyles({
 
 const Login = () => {
     const classes = useStyles();
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [inputEmailError, setInputEmailError] = useState(false);
@@ -50,38 +49,33 @@ const Login = () => {
 
                 const userArray = response.data;
                 const inputEmail = email;
+
                 const result = userArray.find((user => {
                     return user.email === inputEmail;
 
                 }))
-
-                if (result) {
+                if (!result) {
+                    setInputEmailError(true);
+                    setInputPasswordError(true);
+                    return;
+                }
+                if (result.email === email) {
                     setInputEmailError(false)
                 } else {
-                    setInputEmailError(true)
+                    setInputEmailError(true);
                 }
 
-                const inputPassword = password;
-                const resultPassword = userArray.find((user => {
-                    return user.password === inputPassword;
-                }))
-
-                if (resultPassword) {
+                if (result.password === password) {
                     setInputPasswordError(false)
                 } else {
-                    setInputPasswordError(true)
+                    setInputPasswordError(true);
+                    return;
                 }
 
-                console.log('found user: ', result)
-
-
-                if (result && resultPassword) {
-                    localStorage.setItem('email', JSON.stringify(email));
-                    localStorage.setItem('password', JSON.stringify(password));
-                    history.push("/HelloUser");
-                }
-
-
+                localStorage.setItem('email', JSON.stringify(result.email));
+                localStorage.setItem('password', JSON.stringify(result.password));
+                localStorage.setItem('name', JSON.stringify(result.name));
+                history.push("/HelloUser");
             });
     }
 
@@ -142,7 +136,7 @@ const Login = () => {
                             Login </Button>
                     </Grid>
                     <Grid><p>Don't have an account?
-                         <strong>
+                        <strong>
                             <Link to="/SignUp" className={classes.signUpColor}>SignUp</Link>
                         </strong>
                     </p>

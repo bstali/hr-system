@@ -50,22 +50,22 @@ const useStyles = makeStyles({
 })
 
 export default function UserInfo(props) {
-const {userDetails} = useSelector(state => state.userDetails)
-    console.log('userinfo props', props)
+const {employeeDetails} = useSelector(state => state.employeeDetails)
     const classes = useStyles();
+    const employee = employeeDetails;
 
     return (
         <Card className={classes.card}>
            
             <CardContent>
-                {userDetails ?
+                {employee ?
                     <div>
                         <div
                             className={classes.TextField_label_display}>
                             <span className={classes.Label_size}>Employee ID</span>
                             <TextField
                                 
-                                value={userDetails.id}
+                                value={employee.id}
                                 InputProps={{
                                     readOnly: true,
                                     className: classes.TextField
@@ -77,7 +77,7 @@ const {userDetails} = useSelector(state => state.userDetails)
                             className={classes.TextField_label_display}>
                             <span className={classes.Label_size}>Name</span>
                             <TextField
-                                value={userDetails.name}
+                                value={employee.name}
                                 InputProps={{
                                     readOnly: true,
                                     className: classes.TextField
@@ -90,7 +90,7 @@ const {userDetails} = useSelector(state => state.userDetails)
                             <span className={classes.Label_size}>Email</span>
 
                             <TextField
-                                value={userDetails.email}
+                                value={employee.email}
                                 InputProps={{
                                     readOnly: true,
                                     className: classes.TextField
@@ -102,7 +102,7 @@ const {userDetails} = useSelector(state => state.userDetails)
                             className={classes.TextField_label_display}>
                             <span className={classes.Label_size}>Company Name</span>
                             <TextField
-                                value={userDetails.companyName}
+                                value={employee.companyName}
                                 InputProps={{
                                     readOnly: true,
                                     className: classes.TextField

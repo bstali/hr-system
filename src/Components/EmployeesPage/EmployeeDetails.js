@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '../CircularProgress/CircularProgress';
 import Avatar from '@material-ui/core/Avatar';
+import S from 'string'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   avatar: {
+    marginTop: '0px',
     color: 'white',
     backgroundColor: '#14196b',
     width: theme.spacing(3),
@@ -31,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
   userNameText: {
     marginLeft: '6px',
-    marginTop: '3px',
+    marginTop: '2px',
     cursor: 'pointer'
   },
 
@@ -133,8 +135,8 @@ function EmployeeDetailsTable() {
                             </TableCell>
                             <TableCell align="left">
                               <div className={classes.root}>
-                                <Avatar className={classes.avatar}>{usr.name.charAt(0)}</Avatar>
-                                <div className={classes.userNameText} onClick={() => { getIdUrl(usr.id) }}>{usr.name} </div>
+                                <Avatar className={classes.avatar}>{S(usr.name.charAt(0)).capitalize().s}</Avatar>
+                                <div className={classes.userNameText} onClick={() => { getIdUrl(usr.id) }}>{S(usr.name).capitalize().s} </div>
                               </div>
                             </TableCell>
                             <TableCell align="left">#####</TableCell>

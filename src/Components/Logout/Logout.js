@@ -2,8 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { Grow, Paper, Popper, MenuItem, MenuList, makeStyles, Avatar } from '@material-ui/core';
-
-// import S from 'string'
+import S from 'string';
 
 const useStyles = makeStyles({
     avatar: {
@@ -39,19 +38,15 @@ const useStyles = makeStyles({
 
 export default function Logout() {
     const history = useHistory();
-
     const classes = useStyles();
+    const userName =JSON.parse(localStorage.getItem('name'))
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
-    // const email = JSON.parse(localStorage.getItem('email'))
-
 
     const handleToggle = () => {
         setOpen((prevOpen) => !prevOpen);
-        // dispatch(logoutReducer())
+        
     };
-
-    
 
     const handleClose = (event) => {
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
@@ -99,7 +94,7 @@ export default function Logout() {
                     onClick={handleToggle}
                     className={classes.avatar}
                 >
-                   H {/* <div>{S(email.charAt(0)).capitalize().s}</div>  */}
+                   <div>{S(userName.charAt(0)).capitalize().s}</div> 
 
                 </Avatar>
             </div>
@@ -119,10 +114,11 @@ export default function Logout() {
                                     <MenuItem onClick={handleClose}>
                                         <div>
                                             <Avatar className={classes.dropDownAvatar}>
-                                                H{/* {S(email.charAt(0)).capitalize().s} */}
+                                               {S(userName.charAt(0)).capitalize().s}
                                             </Avatar>
                                         </div>
-                                         My Account
+                                        {S(userName).capitalize().s}
+
                                     </MenuItem><hr />
                                     <MenuItem onClick={handleClose}>
                                         <div onClick={logoutFunctionality}

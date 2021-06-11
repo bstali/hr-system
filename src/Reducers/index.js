@@ -1,8 +1,9 @@
-import userDetailsReducer from './userDetailsReducer'
+import employeeDetailsReducer from './employeeDetailsReducer'
 import {combineReducers} from 'redux'
 
 const allReducers = combineReducers({
-    userDetails: userDetailsReducer
+    employeeDetails: employeeDetailsReducer,
+   
 })
 
 export default allReducers;

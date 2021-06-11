@@ -22,12 +22,12 @@ const useStyles = makeStyles({
 
 
 export default function UserTimeOffChart(props) {
-    const {userDetails} = useSelector(state => state.userDetails)
+    const {employeeDetails} = useSelector(state => state.employeeDetails)
    console.log('timeoffchart' ,props)
     const classes = useStyles();
     const chartData = [
-        { leaves: 'totalLeaves', area: userDetails.totalLeaves },
-        { leaves: 'leavesDone', area: userDetails.leavesDone },
+        { leaves: 'totalLeaves', area: employeeDetails.totalLeaves },
+        { leaves: 'leavesDone', area: employeeDetails.leavesDone },
     ]
 
 
@@ -37,8 +37,8 @@ export default function UserTimeOffChart(props) {
 
             <CardContent>
                 <div className={classes.content}>
-                    <h3>Total Leaves: {userDetails.totalLeaves}</h3>
-                    <h3>Leaves Done: {userDetails.leavesDone}</h3>
+                    <h3>Total Leaves: {employeeDetails.totalLeaves}</h3>
+                    <h3>Leaves Done: {employeeDetails.leavesDone}</h3>
                 </div>
                 <div >
                     <Paper >

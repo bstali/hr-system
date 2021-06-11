@@ -5,7 +5,7 @@ import UserBasicInfo from './UserBasicInfo';
 import UserDetailsTabs from './UsersDetailsTabs';
 import CircularProgress from '../CircularProgress/CircularProgress';
 import {useDispatch} from 'react-redux';
-import {userDetailsAction} from '../../actions/userDetailsAction';
+import {employeeDetailsAction} from '../../actions/employeeDetailsAction';
 
 const useStyles = makeStyles({
     loaderPlacement:{
@@ -23,7 +23,7 @@ export default function UserProfile(props) {
         axios.get(`https://60895cb08c8043001757ea35.mockapi.io/api/user/${userId}`)
             .then(response => {
                 const user = response.data;
-                dispatch(userDetailsAction(user))
+                dispatch(employeeDetailsAction(user))
                 setUser(user)
                 
                 
