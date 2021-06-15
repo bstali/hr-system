@@ -1,12 +1,14 @@
 import React from 'react';
 import gif from './Wave Hello GIF.gif';
+import S from 'string';
+
 
 const HelloUser = () => {
-    const email = JSON.parse(localStorage.getItem('email')) 
+    const name = JSON.parse(localStorage.getItem('name')) 
     return (
         <>
             <img style={{width:'30%', height:'30%'}} src={gif} alt="hello" />
-            <h1>{email}</h1>
+            <h1>Hello! {S(name).capitalize().s}</h1>
         </>)
 
 }
