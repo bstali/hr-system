@@ -49,9 +49,8 @@ const useStyles = makeStyles({
   
 });
 
-export default function SimpleTabs(props) {
+export default function UserDetailsTabs(props) {
   const classes = useStyles();
-  
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -69,10 +68,13 @@ export default function SimpleTabs(props) {
       </AppBar>
       <div>
       <TabPanel value={value} index={0} >
-        <UserInfo userDetail={props.userDetail}/> 
+        <UserInfo /> 
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <UserTimeOffChart />
+        <UserTimeOffChart 
+        // totalLeaves={get(userDetails,'totalLeaves', '')}
+        // leavesDone={get(userDetails,'leavesDone', '')}
+        />
       </TabPanel>
       </div>
     </div>
