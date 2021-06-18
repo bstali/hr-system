@@ -12,3 +12,4 @@ I used following libraries
 -> Redux Store  
 -> Lodash, String.js, Moment  
 
+![HR](https://user-images.githubusercontent.com/67542561/122545388-38da0600-d047-11eb-9418-e4ec0d3c10f8.jpg)
