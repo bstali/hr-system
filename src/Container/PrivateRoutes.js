@@ -18,7 +18,7 @@ const PrivateRoute = ({ component: Component, flag, ...rest }) => {
             if (flag) {
                 return <Component {...props} />
             } else {
-                return <Redirect to={'/Hellouser'} />
+                return <Redirect to={'/Employeedetails'} />
             }
 
         }
