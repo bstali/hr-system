@@ -38,8 +38,6 @@ const useStyles = makeStyles((theme) => ({
   },
 
   loaderPlacement: {
-    // paddingLeft: 50,
-    // paddingTop: 200,
     marginLeft: 650,
     marginTop: 250
   }
@@ -50,7 +48,7 @@ function EmployeeDetailsTable() {
   const [users, setUsers] = useState([]);
   const classes = useStyles();
   const history = useHistory();
-  
+
 
 
 
@@ -62,8 +60,8 @@ function EmployeeDetailsTable() {
         setUsers(usersArray)
 
       });
-      
-        
+
+
   }, []);
 
   const sortUsers = (sortOrder) => {
@@ -82,11 +80,11 @@ function EmployeeDetailsTable() {
     history.push(`/Userprofile/${userId}`)
 
   }
-  
+
 
   return (
     <div>
-      {  users.length > 0 ?
+      {users.length > 0 ?
         (<Grid
           container
           direction="row"
@@ -107,7 +105,8 @@ function EmployeeDetailsTable() {
               {
                 users.length > 0 ?
 
-                  <TableContainer component={Paper} ><h1 style={{ textAlign: 'left' }}>Employees</h1>
+                  <TableContainer component={Paper} style={{ boxShadow: '2px 5px 7px 2px grey', }}>
+                    <h1 style={{ textAlign: 'left' }}>Employees</h1>
                     <Table className={classes.table} aria-label="simple table" >
 
                       <TableHead>
@@ -115,8 +114,8 @@ function EmployeeDetailsTable() {
                           <TableCell>ID</TableCell>
                           <TableCell align="left">
                             <span style={{ cursor: 'pointer' }} onClick={() => sortUsers('asc')}>▲</span>
-                          Name
-                          <span style={{ cursor: 'pointer' }} onClick={() => sortUsers('desc')}>▼</span>
+                            Name
+                            <span style={{ cursor: 'pointer' }} onClick={() => sortUsers('desc')}>▼</span>
                           </TableCell>
                           <TableCell align="left">Phone</TableCell>
                           <TableCell align="left">Email</TableCell>
