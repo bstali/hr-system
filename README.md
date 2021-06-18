@@ -12,4 +12,4 @@ I used following libraries
 -> Redux Store  
 -> Lodash, String.js, Moment  
 
-![HR](https://user-images.githubusercontent.com/67542561/122545388-38da0600-d047-11eb-9418-e4ec0d3c10f8.jpg)
+![HR1](https://user-images.githubusercontent.com/67542561/122547164-2fea3400-d049-11eb-8759-a4d85e7f6f7c.jpg)
