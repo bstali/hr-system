@@ -11,4 +11,4 @@ I used following libraries
 -> React Hooks  
 -> Redux Store  
 -> Lodash, String.js, Moment  
-![HR1](https://user-images.githubusercontent.com/67542561/122547524-a6873180-d049-11eb-99fa-402d16897e16.jpg)
+![HR1](https://user-images.githubusercontent.com/67542561/122548596-00d4c200-d04b-11eb-9104-ff6f33a88794.jpg)
