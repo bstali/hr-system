@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Grid } from '@material-ui/core';
 import Logout from '../Logout/Logout';
 
 const useStyles = makeStyles({
@@ -40,29 +40,37 @@ const useStyles = makeStyles({
 
 const Navbar = () => {
     const classes = useStyles();
-    
+
     return (
-        <header className={classes.navbar}>
-            <div
-                className={classes.navbar__title}>
-                HR
-            </div>
+        <Grid
+            container
+            direction="row"
+            justify="flex-start"
+            alignItems="flex-start">
+            <Grid item sm={12}>
+                <header className={classes.navbar}>
+                    <div
+                        className={classes.navbar__title}>
+                        HR
+                    </div>
 
-            <NavLink to="/Employeedetails"
-                className={classes.navbar__item} activeClassName={classes.active}>
+                    <NavLink to="/Employeedetails"
+                        className={classes.navbar__item} activeClassName={classes.active}>
 
-                Employees
-            </NavLink>
-            <NavLink to="/Hellouser"
-                className={classes.navbar__item}
-                activeClassName={classes.active}
+                        Employees
+                    </NavLink>
+                    <NavLink to="/Hellouser"
+                        className={classes.navbar__item}
+                        activeClassName={classes.active}
 
-            >
-                HelloUser
-            </NavLink>
+                    >
+                        HelloUser
+                    </NavLink>
 
-            <Logout />
-        </header>
+                    <Logout />
+                </header>
+            </Grid> 
+        </Grid>
     );
 }
 

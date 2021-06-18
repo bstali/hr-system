@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles, AppBar, Tabs, Tab, Typography, Box, } from '@material-ui/core';
 import UserInfo from './UserInfo';
 import UserTimeOffChart from './UserTimeOffChart';
+import UserLeavesCalendar from './UserLeavesCalendar';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -63,20 +64,22 @@ export default function UserDetailsTabs(props) {
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label="Employee Info" {...a11yProps(0)} />
           <Tab label="Time Off" {...a11yProps(1)} />
-          
+          <Tab label="Leaves" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
+      
       <div>
       <TabPanel value={value} index={0} >
         <UserInfo /> 
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <UserTimeOffChart 
-        // totalLeaves={get(userDetails,'totalLeaves', '')}
-        // leavesDone={get(userDetails,'leavesDone', '')}
-        />
+        <UserTimeOffChart  />
+      </TabPanel>
+      <TabPanel value={value} index={2} >
+        <UserLeavesCalendar /> 
       </TabPanel>
       </div>
+       
     </div>
   );
 }

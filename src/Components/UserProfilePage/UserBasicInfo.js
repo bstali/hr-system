@@ -26,7 +26,6 @@ export default function UserBasicInfo(props) {
     const { employeeDetails } = useSelector(state => state.employeeDetails)
     console.log('EmployeefromStore', employeeDetails)
     const classes = useStyles();
- console.log('user basic info props', props)
     return (
         <Card className={classes.card}>
             <CardContent>
