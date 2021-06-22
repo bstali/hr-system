@@ -8,12 +8,11 @@ const useStyles = makeStyles({
     avatar: {
         color: '#14196b',
         backgroundColor: '#ffffffe8',
-        marginLeft: '1020px',
         fontWeight: 'bold',
         cursor: 'pointer',
         fontFamily: 'Helvetica',
         height: '35px',
-        width: '35px'
+        width: '35px',
     },
 
     dropDownAvatar: {
@@ -85,7 +84,7 @@ export default function Logout() {
 
     return (
 
-        <div>
+        <div style={{right: 0, position: 'absolute', marginRight: '5px'}}>
             <div >
                 <Avatar
                     ref={anchorRef}
