@@ -2,18 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { orderBy } from 'lodash';
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
+import { makeStyles, Table, TableBody, TableCell, TableContainer,
+TableHead, TableRow, Paper, Avatar, Grid } from '@material-ui/core';
 import CircularProgress from '../CircularProgress/CircularProgress';
-import Avatar from '@material-ui/core/Avatar';
-
+import S from 'string'
 
 const useStyles = makeStyles((theme) => ({
   table: {
@@ -23,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   avatar: {
+    marginTop: '0px',
     color: 'white',
     backgroundColor: '#14196b',
     width: theme.spacing(3),
@@ -31,13 +24,11 @@ const useStyles = makeStyles((theme) => ({
   },
   userNameText: {
     marginLeft: '6px',
-    marginTop: '3px',
+    marginTop: '2px',
     cursor: 'pointer'
   },
 
   loaderPlacement: {
-    // paddingLeft: 50,
-    // paddingTop: 200,
     marginLeft: 650,
     marginTop: 250
   }
@@ -48,9 +39,6 @@ function EmployeeDetailsTable() {
   const [users, setUsers] = useState([]);
   const classes = useStyles();
   const history = useHistory();
-  
-
-
 
   useEffect(() => {
 
@@ -60,8 +48,6 @@ function EmployeeDetailsTable() {
         setUsers(usersArray)
 
       });
-      
-        
   }, []);
 
   const sortUsers = (sortOrder) => {
@@ -81,9 +67,10 @@ function EmployeeDetailsTable() {
 
   }
 
+
   return (
     <div>
-      {  users.length > 0 ?
+      {users.length > 0 ?
         (<Grid
           container
           direction="row"
@@ -104,7 +91,8 @@ function EmployeeDetailsTable() {
               {
                 users.length > 0 ?
 
-                  <TableContainer component={Paper} ><h1 style={{ textAlign: 'left' }}>Employees</h1>
+                  <TableContainer component={Paper} style={{ boxShadow: '2px 5px 7px 2px grey', }}>
+                    <h1 style={{ textAlign: 'left' }}>Employees</h1>
                     <Table className={classes.table} aria-label="simple table" >
 
                       <TableHead>
@@ -112,8 +100,8 @@ function EmployeeDetailsTable() {
                           <TableCell>ID</TableCell>
                           <TableCell align="left">
                             <span style={{ cursor: 'pointer' }} onClick={() => sortUsers('asc')}>▲</span>
-                          Name
-                          <span style={{ cursor: 'pointer' }} onClick={() => sortUsers('desc')}>▼</span>
+                            Name
+                            <span style={{ cursor: 'pointer' }} onClick={() => sortUsers('desc')}>▼</span>
                           </TableCell>
                           <TableCell align="left">Phone</TableCell>
                           <TableCell align="left">Email</TableCell>
@@ -132,8 +120,8 @@ function EmployeeDetailsTable() {
                             </TableCell>
                             <TableCell align="left">
                               <div className={classes.root}>
-                                <Avatar className={classes.avatar}>{usr.name.charAt(0)}</Avatar>
-                                <div className={classes.userNameText} onClick={() => { getIdUrl(usr.id) }}>{usr.name} </div>
+                                <Avatar className={classes.avatar}>{S(usr.name.charAt(0)).capitalize().s}</Avatar>
+                                <div className={classes.userNameText} onClick={() => { getIdUrl(usr.id) }}>{S(usr.name).capitalize().s} </div>
                               </div>
                             </TableCell>
                             <TableCell align="left">#####</TableCell>

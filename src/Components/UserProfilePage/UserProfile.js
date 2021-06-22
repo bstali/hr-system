@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { get } from 'lodash'
 import {Grid, makeStyles} from '@material-ui/core';
 import UserBasicInfo from './UserBasicInfo';
-import UserDetailsTabs from './UsersDetailsTabs'
-import CircularProgress from '../CircularProgress/CircularProgress'
+import UserDetailsTabs from './UsersDetailsTabs';
+import CircularProgress from '../CircularProgress/CircularProgress';
+import {useDispatch} from 'react-redux';
+import {employeeDetailsAction} from '../../actions/employeeDetailsAction';
 
 const useStyles = makeStyles({
     loaderPlacement:{
@@ -16,17 +17,18 @@ export default function UserProfile(props) {
     const classes = useStyles();
     const userId = props.match.params.id
     const [user, setUser] = useState(null);
-    
-
+    const dispatch = useDispatch();
 
     useEffect(() => {
         axios.get(`https://60895cb08c8043001757ea35.mockapi.io/api/user/${userId}`)
             .then(response => {
                 const user = response.data;
+                dispatch(employeeDetailsAction(user))
                 setUser(user)
                 
+                
             });
-    }, [userId]);
+    }, [userId, dispatch]);
 
     return (
         <div>
@@ -43,12 +45,12 @@ export default function UserProfile(props) {
                     <Grid item sm={3}>
 
                         <UserBasicInfo
-                            userName={get(user, 'name', '')}
+                            // userName={get(user, 'name', '')}
                             joiningDate={new Date()} />
                     </Grid>
                     <Grid item sm={7} >
                         <UserDetailsTabs
-                            userDetail={user}
+                            // userDetail={user}
                         />
                     </Grid>
 

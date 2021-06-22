@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, CardContent, Avatar, Card } from '@material-ui/core';
 import moment from 'moment';
-import S from 'string'
+import {useSelector} from 'react-redux';
+import S from 'string';
 
 
 const useStyles = makeStyles({
@@ -22,14 +23,15 @@ const useStyles = makeStyles({
 })
 
 export default function UserBasicInfo(props) {
+    const { employeeDetails } = useSelector(state => state.employeeDetails)
+    console.log('EmployeefromStore', employeeDetails)
     const classes = useStyles();
- console.log('user basid info props', props)
     return (
         <Card className={classes.card}>
             <CardContent>
-                <Avatar className={classes.avatar}>{S(props.userName.charAt(0)).capitalize().s}</Avatar>
+                <Avatar className={classes.avatar}>{S(employeeDetails.name.charAt(0)).capitalize().s}</Avatar>  
                 <div>
-                    <h1>{S(props.userName).capitalize().s}</h1>
+                    <h1>{S(employeeDetails.name).capitalize().s}</h1>
                     <p><strong>Hire date:</strong> {moment(props.joiningDate).format("MMMM Do YYYY")}</p>
                 </div>
             </CardContent>

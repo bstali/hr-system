@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles, CardContent, Card, TextField } from '@material-ui/core';
+import {useSelector} from 'react-redux';
 
 const useStyles = makeStyles({
     card: {
@@ -16,11 +17,20 @@ const useStyles = makeStyles({
         backgroundColor: '#a1a0a093'
     },
 
-    Address_TextField: {
+    homeAddress_TextField: {
         width: '300px',
         marginBottom: '4px',
         marginTop: '10px',
         backgroundColor: '#a1a0a093'
+    },
+    
+    homeAddress_label_size: {
+        width: '250px',
+        textAlign: 'right',
+        fontWeight: 'bold',
+        fontSize: '0.9rem',
+        marginTop: '28px',
+        marginRight: '20px'
     },
 
     TextField_label_display: {
@@ -40,22 +50,22 @@ const useStyles = makeStyles({
 })
 
 export default function UserInfo(props) {
-    console.log('userinfo props', props)
+const {employeeDetails} = useSelector(state => state.employeeDetails)
     const classes = useStyles();
-    const user = props.userDetail
+    const employee = employeeDetails;
 
     return (
         <Card className={classes.card}>
            
             <CardContent>
-                {user ?
+                {employee ?
                     <div>
                         <div
                             className={classes.TextField_label_display}>
                             <span className={classes.Label_size}>Employee ID</span>
                             <TextField
                                 
-                                value={user.id}
+                                value={employee.id}
                                 InputProps={{
                                     readOnly: true,
                                     className: classes.TextField
@@ -67,7 +77,7 @@ export default function UserInfo(props) {
                             className={classes.TextField_label_display}>
                             <span className={classes.Label_size}>Name</span>
                             <TextField
-                                value={user.name}
+                                value={employee.name}
                                 InputProps={{
                                     readOnly: true,
                                     className: classes.TextField
@@ -80,7 +90,7 @@ export default function UserInfo(props) {
                             <span className={classes.Label_size}>Email</span>
 
                             <TextField
-                                value={user.email}
+                                value={employee.email}
                                 InputProps={{
                                     readOnly: true,
                                     className: classes.TextField
@@ -92,7 +102,7 @@ export default function UserInfo(props) {
                             className={classes.TextField_label_display}>
                             <span className={classes.Label_size}>Company Name</span>
                             <TextField
-                                value={user.companyName}
+                                value={employee.companyName}
                                 InputProps={{
                                     readOnly: true,
                                     className: classes.TextField
@@ -114,14 +124,14 @@ export default function UserInfo(props) {
                         </div>
                         <div
                             className={classes.TextField_label_display}>
-                            <span className={classes.Label_size}>Home Address</span>
+                            <span className={classes.homeAddress_label_size}>Home Address</span>
                             <TextField
                                 multiline
                                 rows={4}
                                 value="192/B, Behria Town"
                                 InputProps={{
                                     readOnly: true,
-                                    className: classes.Address_TextField
+                                    className: classes.homeAddress_TextField
                                 }}
                                 variant="outlined"
                             />

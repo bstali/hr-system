@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles, AppBar, Tabs, Tab, Typography, Box, } from '@material-ui/core';
 import UserInfo from './UserInfo';
 import UserTimeOffChart from './UserTimeOffChart';
-import { get } from 'lodash';
+import UserLeavesCalendar from './UserLeavesCalendar';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -50,9 +50,8 @@ const useStyles = makeStyles({
   
 });
 
-export default function SimpleTabs(props) {
+export default function UserDetailsTabs(props) {
   const classes = useStyles();
-  
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -65,20 +64,22 @@ export default function SimpleTabs(props) {
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label="Employee Info" {...a11yProps(0)} />
           <Tab label="Time Off" {...a11yProps(1)} />
-          
+          <Tab label="Leaves Request" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
+      
       <div>
       <TabPanel value={value} index={0} >
-        <UserInfo userDetail={props.userDetail}/> 
+        <UserInfo /> 
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <UserTimeOffChart 
-        totalLeaves={get(props.userDetail,'totalLeaves', '')}
-        leavesDone={get(props.userDetail,'leavesDone', '')}
-        />
+        <UserTimeOffChart  />
+      </TabPanel>
+      <TabPanel value={value} index={2} >
+        <UserLeavesCalendar /> 
       </TabPanel>
       </div>
+       
     </div>
   );
 }
