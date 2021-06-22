@@ -84,7 +84,7 @@ export default function Logout() {
 
     return (
 
-        <div style={{right: 0, position: 'absolute', marginRight: '5px'}}>
+        <div style={{right: 0, position: 'absolute', marginRight: '6px'}}>
             <div >
                 <Avatar
                     ref={anchorRef}
