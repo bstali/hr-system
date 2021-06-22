@@ -64,7 +64,7 @@ export default function UserDetailsTabs(props) {
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label="Employee Info" {...a11yProps(0)} />
           <Tab label="Time Off" {...a11yProps(1)} />
-          <Tab label="Leaves" {...a11yProps(2)} />
+          <Tab label="Leaves Request" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       

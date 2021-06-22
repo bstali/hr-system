@@ -2,19 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { orderBy } from 'lodash';
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
+import { makeStyles, Table, TableBody, TableCell, TableContainer,
+TableHead, TableRow, Paper, Avatar, Grid } from '@material-ui/core';
 import CircularProgress from '../CircularProgress/CircularProgress';
-import Avatar from '@material-ui/core/Avatar';
 import S from 'string'
-
 
 const useStyles = makeStyles((theme) => ({
   table: {
@@ -49,9 +40,6 @@ function EmployeeDetailsTable() {
   const classes = useStyles();
   const history = useHistory();
 
-
-
-
   useEffect(() => {
 
     axios.get('https://60895cb08c8043001757ea35.mockapi.io/api/user')
@@ -60,8 +48,6 @@ function EmployeeDetailsTable() {
         setUsers(usersArray)
 
       });
-
-
   }, []);
 
   const sortUsers = (sortOrder) => {
