@@ -27,6 +27,7 @@ const useStyles = makeStyles({
 
     paper: {
         padding: '0px 0px 0px 0px',
+        marginRight: '110px'
     },
 
     dropDownLogoutButton: {
@@ -84,7 +85,7 @@ export default function Logout() {
 
     return (
 
-        <div style={{right: 0, position: 'absolute', marginRight: '6px'}}>
+        <div style={{right: 0, position: 'absolute', marginRight: '5px'}}>
             <div >
                 <Avatar
                     ref={anchorRef}
