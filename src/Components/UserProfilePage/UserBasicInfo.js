@@ -10,15 +10,16 @@ const useStyles = makeStyles({
     
     card: {
         boxShadow: '2px 5px 7px 2px grey',
+        alignItems: 'center'
     },
 
     avatar: {
         color: 'white',
         backgroundColor: '#14196b',
-        marginLeft: '30%',
         height: '100px',
         width: '100px',
         fontSize: '70px',
+        display: 'inline-flex'
     },
 })
 
