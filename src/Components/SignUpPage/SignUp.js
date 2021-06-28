@@ -4,7 +4,7 @@ import { Grid, makeStyles,TextField, Button } from '@material-ui/core';
 
 const useStyles = makeStyles({
 
-    signUpMargin: {
+    signUpFormMargin: {
         marginTop: '10%'
     },
 
@@ -84,7 +84,7 @@ const SignUp = () => {
 
 
     return (
-        <div className={classes.signUpMargin}>
+        <div className={classes.signUpFormMargin}>
             <Grid
                 container
                 direction="column"
