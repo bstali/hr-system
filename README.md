@@ -11,6 +11,7 @@ I used following libraries
 -> React Hooks  
 -> Redux Store  
 -> Lodash, String.js, Moment  
+  
 ![collage](https://user-images.githubusercontent.com/67542561/123791484-eb884f00-d8f8-11eb-8890-c407d6436a8e.jpg)
 
 
