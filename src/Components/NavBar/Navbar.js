@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { makeStyles, Grid } from '@material-ui/core';
 import Logout from '../Logout/Logout';
+import Logo from './Logo';
 
 const useStyles = makeStyles({
     navbar: {
@@ -13,12 +14,10 @@ const useStyles = makeStyles({
         fontWeight: 300,
     },
 
-    navbar__title: {
+    navbar__logo: {
         marginRight: '20px',
-        fontSize: '150%',
-        padding: '12px 16px',
-        verticalAlign: 'middle',
-        fontWeight: 'bold'
+        marginLeft: '10px',
+        marginTop: '7px',
     },
 
     navbar__item: {
@@ -50,8 +49,8 @@ const Navbar = () => {
             <Grid item sm={12}>
                 <header className={classes.navbar}>
                     <div
-                        className={classes.navbar__title}>
-                        HR
+                        className={classes.navbar__logo}>
+                        <Logo />
                     </div>
 
                     <NavLink to="/Employeedetails"
