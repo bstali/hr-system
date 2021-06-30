@@ -27,11 +27,12 @@ const useStyles = makeStyles({
 
     paper: {
         padding: '0px 0px 0px 0px',
-        marginRight: '110px'
+        marginRight: '110px',
     },
 
     dropDownLogoutButton: {
-        width: '100%'
+        width: '100%',
+        textAlign: 'center',
     }
 
 });
