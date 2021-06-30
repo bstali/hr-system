@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import {Helmet} from 'react-helmet'
 import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 import {makeStyles} from '@material-ui/core/styles'
 import Login from '../Components/LoginPage/Login';
@@ -17,7 +18,7 @@ const useStyles = makeStyles({
 
 function App(props) {
   const classes = useStyles();
-  
+  const Title = 'HR System';
   const [showNavbar, setShowNavbar] = useState(false)
   const location = useLocation()
 
@@ -34,6 +35,7 @@ function App(props) {
   return (
 
     <div className={classes.app}>
+      <Helmet><title>{Title}</title></Helmet>
       {showNavbar ? <Navbar /> : null}
       <Switch>
         <Route exact path="/" render={() => { return (<Redirect to="/login" />) }} />
